@@ -25,7 +25,7 @@ project), keep **Framework preset: Vite**, **Build command: `npm run build`**, *
 | Install | `npm install` |
 | Build | `npm run build` (Vite, root `web/`, output `dist/`) |
 | Output | `dist` |
-| Node | 22.x |
+| Node | 24.x (pinned in `package.json` → `engines.node`) |
 
 `vercel.json` already sets all of this plus an SPA fallback rewrite, so no dashboard configuration is needed.
 

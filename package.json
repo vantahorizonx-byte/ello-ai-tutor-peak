@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Ello AI Tutor — Peak. Static client build for Vercel.",
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "vite",

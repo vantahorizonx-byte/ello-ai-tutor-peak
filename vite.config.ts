@@ -12,6 +12,21 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: false,
     target: 'es2022',
+    // Split the two large vendor libraries into their own chunks so no single
+    // bundle trips the 500 kB warning and browsers can cache them separately.
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react')) return 'react';
+            if (id.includes('firebase/firestore') || id.includes('@firebase/firestore')) return 'firebase-firestore';
+            if (id.includes('firebase/auth') || id.includes('@firebase/auth')) return 'firebase-auth';
+            if (id.includes('firebase') || id.includes('@firebase')) return 'firebase-core';
+          }
+          return undefined;
+        },
+      },
+    },
   },
   server: {
     port: 5173,
